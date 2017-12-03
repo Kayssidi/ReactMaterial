@@ -45,7 +45,7 @@ const styles = theme => ({
   },
   drawer:
   {
-    position: 'relative',
+    position: 'static',
     height: '100%',
     width: drawerWidth,
     //border: '2px solid #FF0000',
@@ -53,6 +53,7 @@ const styles = theme => ({
   drawerHeader: theme.mixins.toolbar,
 
   content: {
+    position: 'static',
     backgroundColor: theme.palette.background.default,
     width: '100%',
     padding: theme.spacing.unit * 3,
@@ -63,7 +64,6 @@ const styles = theme => ({
       marginTop: 64,
     },
   },
-
 });
 
 function Material1(props) {
@@ -71,7 +71,7 @@ function Material1(props) {
   return (
     <div className={classes.root}>
 
-      <AppBar position="static" className={classes.appbar}>
+      <AppBar className={classes.appbar}>
         <Toolbar className={classes.toolbar} disableGutters>
           <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />
@@ -105,7 +105,7 @@ function Material1(props) {
 
       <main className={classes.content}>
         <Typography type="body1">
-          {'You think water moves fast? You should see ice.'}
+          {'You think water moves fastt? You should see ice.'}
         </Typography>
       </main>
 
