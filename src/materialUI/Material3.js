@@ -8,7 +8,7 @@ import compose from "recompose/compose";
 
 const styles = theme => ({
   myMainDiv: {
-    position: "relative",
+    position: "static",
     border: "2px solid #FF9800"
   }
 });
