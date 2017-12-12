@@ -34,7 +34,7 @@ class MyAppBar extends React.Component {
       <div className={classes.style_rootDiv}>
         <AppBar position="static">
           <Toolbar>
-            <Typography type="title" color="inherit">{this.props.width}</Typography>
+            <Typography type="caption" color="inherit">[ {this.props.width} ]&nbsp;</Typography>
             <Typography type="title" color="inherit" className={classes.style_title}>
               {this.state.myTitle}
             </Typography>

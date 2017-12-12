@@ -5,6 +5,8 @@ import { withStyles } from "material-ui/styles";
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import Paper from 'material-ui/Paper';
+import Typography from 'material-ui/Typography';
+
 import Grid from 'material-ui/Grid';
 import Hidden from 'material-ui/Hidden';
 
@@ -18,7 +20,7 @@ const styles = theme => ({
   }),
   spacer:
   {
-    border: "2px solid #FF9800"
+    border: "2px solid #EEEEEE"
   },
 });
 
@@ -34,6 +36,12 @@ class MyConnexionForm extends React.Component {
 
         <Grid item xs={12} sm={10} md={8} lg={6} xl={4}>
           <Paper className={classes.root} elevation={4}>
+            <Typography type="headline">
+              Hello!
+            </Typography>
+            <Typography type="body1">
+              Enter your pseudonym and click ok button:
+            </Typography>
           <form noValidate autoComplete="off">
             <TextField
               id="name"
