@@ -7,6 +7,9 @@ import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 
+import withWidth from "material-ui/utils/withWidth";
+import compose from "recompose/compose";
+
 const styles =
 {
   style_rootDiv: {
@@ -31,6 +34,7 @@ class MyAppBar extends React.Component {
       <div className={classes.style_rootDiv}>
         <AppBar position="static">
           <Toolbar>
+            <Typography type="title" color="inherit">{this.props.width}</Typography>
             <Typography type="title" color="inherit" className={classes.style_title}>
               {this.state.myTitle}
             </Typography>
@@ -46,4 +50,4 @@ MyAppBar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(MyAppBar);
+export default compose(withStyles(styles), withWidth())(MyAppBar);
