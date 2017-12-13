@@ -11,7 +11,7 @@ class pageChat extends React.Component {
 
   render() {
     const { classes } = this.props;
-    let prefix="pseudo";
+
     return (
       <div>
         <MyAppBar title="Chatroom" />
