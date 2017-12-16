@@ -21,7 +21,7 @@ const styles = theme => ({
   }),
   spacer:
   {
-    border: "2px solid #EEEEEE"
+    //border: "2px solid #EEEEEE"
   },
 });
 
