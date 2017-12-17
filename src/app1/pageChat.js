@@ -9,16 +9,14 @@ import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import Tooltip from 'material-ui/Tooltip';
 
-import Grid from 'material-ui/Grid';
-import Hidden from 'material-ui/Hidden';
-import { GridList, GridListTile, GridListTileBar } from 'material-ui/GridList';
+import { GridList, GridListTile} from 'material-ui/GridList';
 
 const styles = theme => ({
   root:
   {
       /*marginTop: theme.spacing.unit * 3,*/
       /*padding: theme.spacing.unit * 3,*/
-      border: '2px solid #FF9800',
+      //border: '2px solid #FF9800',
       //position: 'relative',
       //display: 'flex',
       width: '100%',
@@ -28,18 +26,18 @@ const styles = theme => ({
   },
   container:
   {
-    border: '1px solid #FF0000',    
+    //border: '1px solid #FF0000',    
     height: '80%',
   },
   textedit:
   {
     //position:'fixed',
-    position: 'static',
-    bottom: 0,
-    left: 0,
+    //position: 'static',
+    //bottom: 0,
+    //left: 0,
     width:'100%',
-    //border: '2px solid #FF9800',
-    backgroundColor: '#FFFFFF',
+    //border: '2px solid #00FF00',
+    //backgroundColor: '#FFFFFF',
   },
 });
 
@@ -51,27 +49,34 @@ class pageChat extends React.Component {
 
     return (
       <div className={classes.root}>
-        <MyAppBar title="Chatroom" />
+        <MyAppBar title="Chatroom" showLogButton/>
 
-        <GridList className={classes.container} cols={1} cellHeight='auto'>
-          {[0,1,2,3,4,5,6,7,8,9,10].map((value, index) => (
-            <GridListTile key={index} rows='12'>
-            <MyChatMessage key={index} pseudo={`pseudo ${value}`} message={"message " + index} />
-            </GridListTile>
-          ))} 
-         </GridList>
+        
+        
+          <GridList className={classes.container} cols={1} cellHeight='auto'>
+            {[0,1,2,3,4,5,6,7,8,9,10].map((value, index) => (
+              <GridListTile key={index}>
+                <MyChatMessage key={index} pseudo={`pseudo ${value}`} message={"message " + index} />
+              </GridListTile>
+            ))}
+          </GridList>
+        
+          <form noValidate autoComplete="off" className={classes.textedit}>
+            <TextField
+              id="name"
+              label="Message"
+              //onChange={this.handleChange}
+              margin="normal"
+              fullWidth
+            />
+            <Tooltip title="Send a message" placement="bottom">
+              <Button raised color="primary">OK</Button>
+            </Tooltip>
+            <Tooltip title="Clear a message" placement="bottom">
+              <Button raised color="Secondary">Clear</Button>
+            </Tooltip>
+          </form>
 
-        <form noValidate autoComplete="off" className={classes.textedit}>
-          <TextField
-            id="name"
-            label="Message"
-            //onChange={this.handleChange}
-            margin="normal"
-          />
-          <Tooltip title="Let's Go :) !" placement="bottom">
-            <Button raised color="primary">OK</Button>
-          </Tooltip>
-        </form>
       </div>
     );
   }

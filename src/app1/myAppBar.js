@@ -7,6 +7,8 @@ import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 
+import { Route } from 'react-router-dom'
+
 import withWidth from "material-ui/utils/withWidth";
 import compose from "recompose/compose";
 
@@ -21,6 +23,14 @@ const styles =
   },
 
 };
+
+const ButtonToNavigate = ({ title, history }) => (
+  <Button raised color="secondary"
+    onClick={ () => history.push('/') }
+  >
+    {title}
+  </Button>
+);
 
 class MyAppBar extends React.Component {
   state =
@@ -38,7 +48,9 @@ class MyAppBar extends React.Component {
             <Typography type="title" color="inherit" className={classes.style_title}>
               {this.state.myTitle}
             </Typography>
-            {this.props.showLogButton && <Button color="contrast">Change log</Button>}
+            {this.props.showLogButton &&
+              <Route path="/" render={(props) => <ButtonToNavigate {...props} title="Disconnect" />} />
+            }
           </Toolbar>
         </AppBar>
       </div>

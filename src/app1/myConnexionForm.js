@@ -11,6 +11,8 @@ import Tooltip from 'material-ui/Tooltip';
 import Grid from 'material-ui/Grid';
 import Hidden from 'material-ui/Hidden';
 
+import { Route,Link } from 'react-router-dom'
+
 const styles = theme => ({
   root: theme.mixins.gutters({
     paddingTop: theme.spacing.unit,
@@ -24,6 +26,17 @@ const styles = theme => ({
     //border: "2px solid #EEEEEE"
   },
 });
+
+const ButtonToNavigate = ({ title, history }) => (
+  <Tooltip title="Let's Go :) !" placement="bottom">
+    <Button raised color= "primary"
+      type="button"
+      onClick={() => history.push('/pseudo')}
+    >
+      {title}
+    </Button>
+  </Tooltip>
+);
 
 class MyConnexionForm extends React.Component {
   state = {};
@@ -42,12 +55,14 @@ class MyConnexionForm extends React.Component {
 
         <Grid item xs={12} sm={10} md={8} lg={6} xl={4}>
           <Paper className={classes.root} elevation={4}>
+            
             <Typography type="headline">
               Hello!
             </Typography>
             <Typography type="body1">
               Enter your pseudonym and click ok button:
             </Typography>
+
           <form noValidate autoComplete="off">
             <TextField
               id="name"
@@ -55,16 +70,18 @@ class MyConnexionForm extends React.Component {
               onChange={this.handleChange}
               margin="normal"
             />
-            <Tooltip title="Let's Go :) !" placement="bottom">
-             <Button raised color="primary">OK</Button>
-            </Tooltip>
+            
+          <Route path="/" render={ (props) =>
+            <ButtonToNavigate {...props} title="OK" />
+          }/>
+
           </form>
           </Paper>
         </Grid>
 
-        <Hidden xsDown><Grid item xs className={classes.spacer} /></Hidden>
-        
+        <Hidden xsDown><Grid item xs className={classes.spacer} /></Hidden> 
       </Grid>
+      
     )
   }
 }
