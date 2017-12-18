@@ -11,7 +11,7 @@ import Tooltip from 'material-ui/Tooltip';
 import Grid from 'material-ui/Grid';
 import Hidden from 'material-ui/Hidden';
 
-import { Route,Link } from 'react-router-dom'
+import { Route,Link } from 'react-router-dom';
 
 const styles = theme => ({
   root: theme.mixins.gutters({
@@ -27,11 +27,11 @@ const styles = theme => ({
   },
 });
 
-const ButtonToNavigate = ({ title, history }) => (
+const ButtonToNavigate = ({ title, pseudo, history }) => (
   <Tooltip title="Let's Go :) !" placement="bottom">
     <Button raised color= "primary"
       type="button"
-      onClick={() => history.push('/pseudo')}
+      onClick={() => history.push(`/pseudo/${pseudo}`)}
     >
       {title}
     </Button>
@@ -43,7 +43,9 @@ class MyConnexionForm extends React.Component {
 
   handleChange = (event) =>
   {
-    console.log("change in form");
+    let pseudo = event.target.value;
+    this.setState( {pseudo} );
+    console.log(pseudo);
   }
 
   render() {
@@ -65,14 +67,15 @@ class MyConnexionForm extends React.Component {
 
           <form noValidate autoComplete="off">
             <TextField
-              id="name"
-              label="Pseudo"
-              onChange={this.handleChange}
-              margin="normal"
+                      id="name"
+                      label="Pseudo"
+                      onChange={this.handleChange}
+                      margin="normal"
             />
             
           <Route path="/" render={ (props) =>
-            <ButtonToNavigate {...props} title="OK" />
+                /* provide the pseudo-state to the navigation-button */
+                <ButtonToNavigate {...props} title="OK" pseudo={this.state.pseudo}/>
           }/>
 
           </form>

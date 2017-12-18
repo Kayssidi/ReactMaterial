@@ -42,7 +42,10 @@ const styles = theme => ({
 });
 
 class pageChat extends React.Component {
-  state = {};
+  
+  state = {
+            myPseudo: this.props.pseudo,
+          };
 
   render() {
     const { classes } = this.props;
