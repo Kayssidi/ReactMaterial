@@ -27,7 +27,7 @@ const styles = theme => ({
   },
 });
 
-const ButtonToNavigate = ({ title, pseudo, history }) => (
+const ButtonToNavigate = ({ title, pseudo, history}) => (
   <Tooltip title="Let's Go :) !" placement="bottom">
     <Button raised color= "primary"
       type="button"

@@ -19,7 +19,7 @@ class MyChatMessage extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <ListItem button>
+      <ListItem>
         <Avatar>
           <FaceIcon/>
         </Avatar>
