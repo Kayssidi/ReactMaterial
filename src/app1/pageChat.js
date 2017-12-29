@@ -43,10 +43,11 @@ const styles = theme => ({
 
 class pageChat extends React.Component {
 
+  textFiledInputRef = null;
+
   state = {
     myPseudo: this.props.pseudo,
     messages: {},
-    currentMessage: '',
   };
 
   addMessage = () => {
@@ -55,7 +56,7 @@ class pageChat extends React.Component {
     const messages = { ...this.state.messages };
     // 2 On ajoute le message avec une clé timestamp
     const timestamp = Date.now();
-    messages[`message-${timestamp}`] = message;
+    messages[`message-${timestamp}`] = { msg_pseudo: this.state.myPseudo, msg_message:message };
     // On ne garde que les 10 derniers messages
     Object.keys(messages).slice(0, -10).map(key => messages[key] = null);
     // 3 Set State
@@ -63,24 +64,6 @@ class pageChat extends React.Component {
 
     this.textFiledInputRef.value = "";
   }
-
-  handleChange = (event) => {
-    //const currentMessage = this.textFiledInputRef.value; //event.target.value;
-    //this.setState( {currentMessage} );
-    //console.log(this.textFiledInputRef.value);
-  }
-
-  InputProps = {
-    inputProps: {
-      step: 300,
-      //value:"TEST2",
-    },
-  };
-
-  /*handleRef = (node) => {
-    this.textFiledInputRef = node;
-    //console.log(node.value);
-  }*/
 
   render() {
     const { classes } = this.props;
@@ -90,13 +73,13 @@ class pageChat extends React.Component {
       .map((key, index) => {
         return (
           <GridListTile key={index}>
-            <MyChatMessage key={index} pseudo={`pseudo ${key}`} message={this.state.messages[key]} />
+            <MyChatMessage key={index} pseudo={this.state.myPseudo} message={this.state.messages[key].msg_message} />
           </GridListTile>)
       });
 
     return (
       <div className={classes.root}>
-        <MyAppBar title="Chatroom" showLogButton />
+        <MyAppBar title={this.state.myPseudo} showLogButton />
 
         <GridList className={classes.container} cols={1} cellHeight='auto'>
           {messages}
@@ -106,12 +89,9 @@ class pageChat extends React.Component {
           <TextField
             id="name"
             label="Message"
-            onChange={this.handleChange}
             margin="normal"
             fullWidth
-            InputProps={this.InputProps}
-            //inputRef={this.handleRef}
-            inputRef={(node) => this.textFiledInputRef = node}
+            inputRef={ (node) => this.textFiledInputRef = node }
           />
           <Tooltip title="Send a message" placement="bottom">
             <Button raised color="primary"
@@ -130,7 +110,12 @@ class pageChat extends React.Component {
 }
 
 pageChat.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  pseudo : PropTypes.string.isRequired
+};
+
+pageChat.defaultProps = {
+  pseudo: "DefaultPseudo",
 };
 
 export default withStyles(styles)(pageChat);

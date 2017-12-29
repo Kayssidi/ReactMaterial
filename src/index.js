@@ -17,7 +17,7 @@ const App = () => (
       <div style={{ height: '90vh', border: '#2px solid #FFFF00' }}>
         <Switch>
           <Route exact path="/" component={PageConnexion} />
-          <Route path="/pseudo" render={ (props) => <PageChat />} />
+          <Route path="/pseudo/:pseudo" render={(props) => <PageChat pseudo={props.match.params.pseudo}/>} />
         </Switch>
       </div>
     </BrowserRouter>
