@@ -16,19 +16,14 @@ class MyPeriForm extends React.Component {
   };
 
   apiUser = (userid) => {
-    fetch(apiGetUserUrl(userid))
-          .then(data => data.json())
+    fetch(apiGetUserUrl(userid), { mode: 'cors'})
+          //.then( data => console.log(data));
+          .then(data => { return data.json() })
           .then( content => this.setState( { content }) );
-  }
-
-  componentDidMount()
-  {
-    this.apiUser("1");
   }
 
   componentWillReceiveProps(nextProps)
   {
-    console.log( nextProps.userid );
     this.apiUser( nextProps.userid );
   }
 

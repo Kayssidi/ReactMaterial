@@ -13,21 +13,15 @@ const styles = {};
 class PagePeri extends React.Component {
 
   state = {
-    userid:0,
+    userid:1,
   };
-
-  userSelected = (userid) =>
-  {
-    console.log( userid );
-    this.setState( {userid} );
-  }
 
   render() {
     const { classes } = this.props;
     return (
       <div>
         <MyAppBar title="Peri API Tester" />
-        <MyPeriUsersList cbUserSelected={this.userSelected}/>
+        <MyPeriUsersList cbUserSelected={ (userid) => this.setState( {userid} )}/>
         <MyPeriForm userid={this.state.userid}/>
       </div>
     );
