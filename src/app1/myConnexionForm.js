@@ -11,7 +11,7 @@ import Tooltip from 'material-ui/Tooltip';
 import Grid from 'material-ui/Grid';
 import Hidden from 'material-ui/Hidden';
 
-import { Route,Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 const styles = theme => ({
   root: theme.mixins.gutters({
