@@ -13,12 +13,12 @@ const styles = theme => ({
 
 });
 
-const ButtonToNavigateToApiTestPage = ({history}) => (
+const ButtonToNavigate = ({url, title, history}) => (
     <Button raised color= "primary"
       type="button"
-      onClick={() => history.push(`/apitest`)}
+      onClick={() => history.push(url)}
     >
-      API Test
+      {title}
     </Button>
 );
 
@@ -30,8 +30,11 @@ function PageConnexion(props) {
       <MyConnexionForm />
       
       <Route path="/" render={ (props) =>
-        <ButtonToNavigateToApiTestPage {...props} />
+        <ButtonToNavigate {...props} url="/apitest" title="API Test"/>
       }/>
+      <Route path="/" render={(props) =>
+        <ButtonToNavigate {...props} url="/peri" title="Peri"/>
+      } />
     </div>
   );
 }
