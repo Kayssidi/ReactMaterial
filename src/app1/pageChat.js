@@ -26,7 +26,7 @@ const styles = theme => ({
   },
   container:
   {
-    //border: '1px solid #FF0000',    
+    border: '1px solid #FF0000',    
     height: '80%',
   },
   textedit:
@@ -49,6 +49,17 @@ class pageChat extends React.Component {
     myPseudo: this.props.pseudo,
     messages: {},
   };
+
+  componentWillMount() {
+    {
+      console.log("componentWillMount");
+      let messages = {};
+      [0,1,2/*,3,4,5,6*/].map((key, index) => {
+        messages[`messageX-${index}`] = { msg_pseudo: '', msg_message: '' };
+      });
+      this.setState({ messages }); 
+    }
+  }
 
   addMessage = () => {
     const message = this.textFiledInputRef.value; //this.state.currentMessage;
@@ -73,7 +84,10 @@ class pageChat extends React.Component {
       .map((key, index) => {
         return (
           <GridListTile key={index}>
-            <MyChatMessage key={index} pseudo={this.state.myPseudo} message={this.state.messages[key].msg_message} />
+            {
+              this.state.messages[key] &&
+              <MyChatMessage key={index} pseudo={this.state.messages[key].msg_pseudo} message={this.state.messages[key].msg_message} />
+            }
           </GridListTile>)
       });
 
