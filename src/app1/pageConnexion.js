@@ -35,6 +35,9 @@ function PageConnexion(props) {
       <Route path="/" render={(props) =>
         <ButtonToNavigate {...props} url="/peri" title="Peri"/>
       } />
+      <Route path="/" render={(props) =>
+        <ButtonToNavigate {...props} url="/d3" title="d3" />
+      } />
     </div>
   );
 }
