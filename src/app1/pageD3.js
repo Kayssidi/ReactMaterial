@@ -12,13 +12,14 @@ const styles = {};
 class PageD3 extends React.Component {
   state = {
             datas : [],
+            maxDataValue : 100,
   };
 
   addData = () =>
   {
     const datas = this.state.datas;
     const v = Math.random();
-    datas.push(v * 100);
+    datas.push(v * this.state.maxDataValue);
     this.setState ( {datas} );
   }
 
@@ -29,20 +30,47 @@ class PageD3 extends React.Component {
     this.setState( {datas} );
   }
 
+  addRemoveData = () =>
+  {
+    this.addData();
+    this.removeData();
+  }
+
+  clearData = () =>
+  {
+    const datas = [];
+    this.setState( {datas} );
+  }
+
   render() {
     const { classes } = this.props;
     return (
             <div>
               <MyAppBar title="D3 Tester" />
-              <BarChart data={this.state.datas} size={[500, 250]} />
+              <BarChart data={this.state.datas}
+                        maxDataValue={this.state.maxDataValue}
+                        size={[500, 250]} />
               
-              <Button raised color= "primary" type="button" onClick={() => this.addData() } >
-                Add Data
-              </Button>
+              <div>
+                <Button raised color= "primary" type="button" onClick={() => this.addData() } >
+                  Add Data
+                </Button>
 
-              <Button raised color="primary" type="button" onClick={() => this.removeData() } >
-                Remove Data
-              </Button>
+                <Button raised color="primary" type="button" onClick={() => this.removeData() } >
+                  Remove Data
+                </Button>
+
+                <Button raised color="primary" type="button" onClick={() => this.addRemoveData() } >
+                  Add&Remove Data
+                </Button>
+
+                <Button raised color="primary" type="button" onClick={() => this.clearData()} >
+                  Clear Data
+                </Button>
+
+                {this.state.datas.length}
+                
+              </div>
             </div>
            );
   }
