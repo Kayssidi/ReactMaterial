@@ -49,7 +49,7 @@ class PageD3 extends React.Component {
               <MyAppBar title="D3 Tester" />
               <BarChart data={this.state.datas}
                         maxDataValue={this.state.maxDataValue}
-                        size={[500, 250]} />
+                        size={[window.innerWidth - window.innerWidth/10, 250]} />
               
               <div>
                 <Button raised color= "primary" type="button" onClick={() => this.addData() } >
@@ -69,7 +69,7 @@ class PageD3 extends React.Component {
                 </Button>
 
                 {this.state.datas.length}
-                
+
               </div>
             </div>
            );
