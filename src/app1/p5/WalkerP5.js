@@ -37,11 +37,10 @@ class Walker {
   }
 }
 
-let walkers = [];
-
-const sketcher = (p5) => {
+const sketch = (p5) => {
 
   const bgColor = 128;
+  let walkers = [];
 
   p5.setup = () => {
     p5.createCanvas(screen_w, screen_h);
@@ -62,4 +61,4 @@ const sketcher = (p5) => {
   }
 }
 
-export default sketcher;
+export default sketch;
