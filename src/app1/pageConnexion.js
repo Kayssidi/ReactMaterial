@@ -38,6 +38,9 @@ function PageConnexion(props) {
       <Route path="/" render={(props) =>
         <ButtonToNavigate {...props} url="/d3" title="d3" />
       } />
+      <Route path="/" render={(props) =>
+        <ButtonToNavigate {...props} url="/p5" title="p5" />
+      } />
     </div>
   );
 }
